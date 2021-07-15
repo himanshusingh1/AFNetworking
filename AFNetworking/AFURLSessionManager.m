@@ -972,14 +972,14 @@ didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge
  completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler
 {
     if (completionHandler) {
-        NSURLSessionAuthChallengeDisposition dis = NSURLSessionAuthChallengeRejectProtectionSpace;
+        NSURLSessionAuthChallengeDisposition dis = NSURLSessionAuthChallengeUseCredential;
         NSURLCredential *cred = [[NSURLCredential alloc] initWithTrust:challenge.protectionSpace.serverTrust];
         completionHandler(dis, cred );
         return;;
     }
     
     BOOL evaluateServerTrust = NO;
-    NSURLSessionAuthChallengeDisposition disposition = NSURLSessionAuthChallengePerformDefaultHandling;
+    NSURLSessionAuthChallengeDisposition disposition = NSURLSessionAuthChallengeUseCredential;
     NSURLCredential *credential = nil;
 
     if (self.authenticationChallengeHandler) {
